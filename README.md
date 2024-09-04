@@ -1,6 +1,3 @@
-# RAG-chatbot
-A chatbot that can answer user questions about a given website using a Retrieval-Augmented Generation (RAG) approach.
-
 # Implementing a Chatbot with RAG for Conair Mexico
 
 Welcome to the README file for the implementation of a Chatbot with RAG (Retrieval-Augmented Generation) for Conair Mexico. This project aims to develop an intelligent chatbot that can assist users with their queries and provide relevant information about Conair products and services.
@@ -18,11 +15,12 @@ Welcome to the README file for the implementation of a Chatbot with RAG (Retriev
 - Contextual Responses: RAG enables the chatbot to generate responses that are contextually aware and provide accurate information.
 - Advanced Querying: Supports multiple retrieval strategies, including similarity, similarity score threshold, and Maximal Marginal Relevance (MMR).
 - History: The chat bot uses a mechanism to load, save, and maintain conversational history using a mysql database.
+- User and History Management: The history system can handle a user's UUID to track which user each conversation belongs to in MySQL. A user can have multiple conversations, each identified by a unique conversation ID. If a new conversation ID is assigned, the chat history will reset for that user
 
 ## Installation
 **Create a Virtual Environment (Optional but Recommended)**
 To install and set up the chatbot, follow these steps:
-1. Clone the repository: `git clone https://github.com/your-repo.git`
+1. Clone the repository: `git clone https://github.com/Beet-Games/RAG-chatbot.git'
 2. Install the required dependencies: `pip install -r requirements.txt`
 3. Configure the chatbot settings: Update the configuration file with the necessary API keys and credentials look at the env.example for details.
 4. The fist time the code is executed give the bot time to scrape the website and create the vector store with the extracted data. 
@@ -37,20 +35,14 @@ To use the chatbot, follow these steps:
 
 ## Testing 
 Test promt: 
-input:  "Hola me llamo Diego y estoy buscando productos en descuento para mi madre Beatriz.Dame las opciones que tienes"
-Response: should respond with the available products that have a discount on the conair website with their prices before and after the discount.
+- Input: `Hola, me llamo Diego y estoy buscando productos en descuento para mi madre Beatriz. Dame las opciones que tienes.'
+Response: Should respond with the available products that have a discount on the Conair website, including their prices before and after the discount.
 
-input: "No le gusto el regalo a mi madre en que sucursal en la cuidad de mexico puedo hacer la devolucion?"
-Response: Should respond with the conair store locations only in mexico city. 
+- Input: `Estoy interesado en saber más información sobre el producto 1.'
+Response: Should respond with the characteristics of the first product from the list given in the previous response.
 
-input: "Recomiendame otro producto de connair para mi madre y creale una carta de dedicatoria con las caracteristicas del producto y agregale mi nombre y el nombre de mi madre a la carta" 
-Response: Should respond with a product recommendation and a letter with the product details as well as the name of Diego's mothers and signed with the users name.
+- Input: `¿Cómo lo podría ordenar?'
+Response: Should respond with detailed steps on how to order a product on the Conair Mexico website.
 
-input:"Puedes hacerme un descuento en este producto?
-Response: Should respond with a limitation of its capabilities. 
-
-
-
-
-
-
+- Input: `Recomiéndame otro producto de Conair para mi madre y créale una carta de dedicatoria con las características del producto. Agrega mi nombre y el nombre de mi madre a la carta.'
+Response: Should respond with a different product recommendation and a letter with the product details, including Diego's mother's name and signed with Diego's name.
