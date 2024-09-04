@@ -1,0 +1,11 @@
+python-dotenv
+openai
+chromadb
+langchain-openai
+langchain-chroma
+langchain-community
+langchain-text-splitters
+beautifulsoup4
+requests
+streamlit
+streamlit-chat
